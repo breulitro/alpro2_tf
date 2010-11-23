@@ -508,7 +508,7 @@ public class CadastroFilmesView extends FrameView {
 		jTextAreaComentario.setText(null);
 		jTextFieldAno.setText(null);
 		jTextFieldDiretor.setText(null);
-		jTextFieldMidia.setText(null); //FIXME: enhancements in media exposê
+		jTextFieldMidia.setText(null); //FIXME: enhancements in media exposê?
 		jTextFieldNota.setText(null);
 		jTextFieldTmdbid.setText(null);
 		jTextFieldTraduzido.setText(null);

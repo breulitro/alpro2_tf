@@ -489,7 +489,8 @@ public class TmdbCadastro extends javax.swing.JFrame {
 					jTextFieldAno.setText("" + f.getAno());
 					jTextFieldDiretor.setText(f.getDiretor());
 					jTextFieldUrl.setText(f.getUrl());
-					//FIXME: [Duvida] votos e nota não existe na classe Filme, pegar do IMDB?
+					//FIXED: [Duvida] votos e nota não existe na classe Filme, pegar do IMDB?
+					//	   : [Resposta] Não, é prá pegar só o q tem no arquivo do IMDB mesmo.
 					return;
 				}			
 			JOptionPane.showMessageDialog(this, "Filme não encontrado no IMDB");
