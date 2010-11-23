@@ -1,0 +1,395 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="http://www.nongnu.org/elyxer/">
+<meta name="create-date" content="2010-11-04">
+<link rel="stylesheet" href="enunciado_files/lyx.css" type="text/css" media="screen">
+<script type="text/javascript" src="enunciado_files/highlight2.js"></script><script type="text/javascript">initHighlightingOnLoad();</script><title>Converted document</title>
+</head><body>
+<div id="globalWrapper">
+<h2 class="Date">
+Pontifícia Universidade Católica do Rio Grande do Sul<br>
+Faculdade de Informática — Algoritmos e Programação II
+</h2>
+<h1 class="title">
+<b>Trabalho Final - 2010/2</b>
+</h1>
+<h2 class="author">
+<b>MMC</b>
+</h2>
+<h1 class="Seção">
+<a class="toc" name="toc-Seção-1">1</a> <b>Instruções</b>
+</h1>
+<ul>
+<li>
+O trabalho deve ser feito em duplas ou individualmente. 
+</li>
+<li>
+Cada dupla deve fazer o download do arquivo zip necessário para implementar este trabalho, que está disponível <a class="URL" href="testetmdb.zip">neste link</a>. O zip contém um projeto do <i>NetBeans</i>: se você usa o <i>Eclipse</i>, será preciso ajustar manualmente os caminhos para as bibliotecas auxiliares (<i>json.jar</i> e <i>jtmdb-1.9.12.jar</i>). Consulte o professor em caso de dúvida.
+</li>
+<li>
+Abra o ambiente de sua preferência e crie um projeto para este exercício. Recomenda-se utilizar o <i>Eclipse</i> ou o <i>NetBeans</i>.
+</li>
+
+</ul>
+<h1 class="Seção">
+<a class="toc" name="toc-Seção-2">2</a> Enunciado
+</h1>
+<div class="Standard">
+Your mission, should you accept it, é desenvolver o sistema <i>My Movie Collection (MMC)</i> que permite ao usuário manter um controle eficiente dos seus filmes.
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.1">2.1</a> Filmes
+</h2>
+<div class="Standard">
+O sistema possui um cadastro de filmes pessoais. Sobre cada filme são armazenados, minimamente as seguintes informações:
+</div>
+<ul>
+<li>
+nome original
+</li>
+<li>
+nome em Português
+</li>
+<li>
+nome do diretor
+</li>
+<li>
+comentários pessoais
+</li>
+<li>
+pôster (imagem do pôster do filme)
+</li>
+<li>
+número de identificação do filme no <i>TMDb</i> (ver seção <a class="Reference" href="#sub:online">3.2↓</a>)
+</li>
+
+</ul>
+<div class="Standard">
+O sistema deve ainda manipular os diferentes tipos de filmes (midias):
+</div>
+<ul>
+<li>
+DVD (dêvêdê) - adicionalmente armazena a quantidade de discos e a região do DVD (0 a 6)
+</li>
+<li>
+BD (<i>blu-ray</i>) - adicionalmente armazena a região (<i>free</i>, A, B, C)
+</li>
+<li>
+Arquivo - adicionalmente, armazena o tamanho em MB, nome do arquivo, extensão e <i>codec</i> (<i>MPEG-2</i>, <i>MPEG-4</i>, <i>H.264</i>, <i>DivX</i>, <i>XVid</i>, <i>Windows Media</i>, <i>RealVideo</i>, etc)
+</li>
+
+</ul>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.2">2.2</a> Cadastro de filmes
+</h2>
+<div class="Standard">
+O cadastro de filmes deve ser obrigatoriamente implementado utilizando uma <b>árvore binária de pesquisa</b>,
+ de forma que seja possível localizar um filme pelo seu nome original. 
+Cada nodo da árvore armazena uma referência para o filme correspondente.
+</div>
+<div class="Standard">
+
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.3">2.3</a> Entrada de dados
+</h2>
+<div class="Standard">
+Para facilitar a entrada dos dados da coleção, o sistema terá à disposição a lista dos <i>Top 250</i> do<i> <a class="URL" href="http://www.imdb.com/chart/top">Internet Movie Database</a></i>, na forma de um arquivo texto. O usuário então terá duas opções:
+</div>
+<ol>
+<li>
+Selecionar um filme dentre os 250 disponíveis, e importar 
+automaticamente os dados para uma nova entrada na coleção. Os dados 
+disponíveis nesse arquivo são o nome original do filme, e o nome do 
+diretor.
+</li>
+<li>
+Importar os dados do filme desejado através de uma pesquisa online no site <i>The Open Movie Database</i> - <i>TMDb</i> (<i><a class="URL" href="http://www.themoviedb.org/">http://www.themoviedb.org</a></i>).
+</li>
+
+</ol>
+<div class="Standard">
+A digitação manual de dados só deve ser oferecida no caso da informação não estar disponível nas duas bases de dados (<i>IMDB</i> e <i>TMDb</i>). Por exemplo, o nome em Português, ou se for um filme armazenado em um arquivo (i.e. que não seja em DVD ou <i>Blu-ray</i>).
+</div>
+<div class="Standard">
+Em qualquer um dos casos, deve ser possível a obtenção do pôster do filme através de acesso <i>online</i> ao <i>TMDb</i>. Para tanto, é preciso obter e armazenar o número de identificação do filme (<i>id</i>)<i> </i>no <i>TMDb</i> (ver seção <a class="Reference" href="#sub:online">3.2↓</a>).
+</div>
+<div class="Standard">
+<b>Não é necessário alterar o arquivo de dados do IMDB.</b>
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-2.4">2.4</a> Interface Gráfica
+</h2>
+<div class="Standard">
+O sistema deve apresentar uma interface gráfica que permita inserir e 
+atualizar dados dos filmes armazenados em sua coleção pessoal. Os filmes
+ devem ser apresentados, em ordem alfabética, em uma <i>listbox</i>. As seguintes opções devem estar disponíveis ao usuário:
+</div>
+<ol>
+<li>
+Adicionar um novo filme à coleção pessoal: deve ser oferecida a opção de busca no <i>IMDB </i>(arquivo texto já carregado) ou no <i>TMDb </i>(<i>online</i>).
+ A partir dos dados básicos, o usuário deve ser capaz de entrar com os 
+dados adicionais: nome em Português, comentários pessoais sobre o filme e
+ informações sobre o tipo de mídia e detalhes. Nesse momento, também 
+deve ser recuperado o pôster do filme (ver detalhes na seção <a class="Reference" href="#sub:detalhes">3↓</a>).
+</li>
+<li>
+Editar um filme: apenas o nome em Português, os comentários e os campos 
+relacionados à mídia podem ser editados, os demais campos são fixos.
+</li>
+<li>
+Remover um filme da coleção pessoal: o usuário deve confirmar a escolha.
+</li>
+<li>
+Visualizar informações adicionais: ao selecionar um filme da coleção, também deve ser possível buscar <i>online</i> informações adicionais do filme:<ul>
+<li>
+data de início da exibição (<i>released</i> <i>date</i>)
+</li>
+<li>
+produtores
+</li>
+<li>
+faixa etária (<i>certification</i>)
+</li>
+<li>
+avaliação (<i>rating</i>)
+</li>
+<li>
+orçamento da produção (<i>budget</i>)
+</li>
+<li>
+lista completa de personagens e atores
+</li>
+
+</ul>
+<div class="Standard">
+<b>Observação</b>: não é necessário armazenar essas informações na coleção pessoal, são apenas para fins de consulta <i>online</i>.
+</div>
+
+</li>
+<li>
+Carregar e salvar o arquivo de dados da coleção pessoal: o sistema deve 
+permitir a leitura e gravação dos dados atuais da coleção, através de 
+serialização em arquivo binário.<p><br>
+</p>
+
+</li>
+
+</ol>
+<h1 class="Seção">
+<a class="toc" name="toc-Seção-3">3</a> <a class="Label" name="sub:detalhes"> </a>Detalhes Técnicos
+</h1>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-3.1">3.1</a> Arquivos de dados do <i>Top 250</i> (<i>IMDB</i>)
+</h2>
+<div class="Standard">
+As classes <i>ArquivoFilmes</i> e <i>Filme</i> permitem a leitura dos 
+dados do arquivo texto. O sistema desenvolvido deverá usar os métodos de
+ acesso disponíveis. As classes não precisam ser alteradas.
+</div>
+<div class="Standard">
+Por exemplo:
+</div>
+<div class="Standard">
+<div class="listing">
+<pre><code class="java"><span class="keyword">import</span> pucrs.imdb.*;
+...
+ArquivoFilmes arqFilmes = <span class="keyword">new</span> ArquivoFilmes();
+arqFilmes.preencherPorArquivo(<span class="string">"imdb-short20102.txt"</span>);
+
+ListaFilmes listaFilmes = arqFilmes.getListaFilmes();
+
+System.out.println(listaFilmes.getTotalFilmes());
+<span class="keyword">for</span>(Filme f: listaFilmes)
+  System.out.println(f);
+</code></pre>
+</div>
+
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-3.2">3.2</a> <a class="Label" name="sub:online"> </a>Acesso <i>online</i> às informações do <i>TMDb</i>
+</h2>
+<div class="Standard">
+O <i>site The Open Movie Database </i>oferece uma API de acesso aos 
+dados armazenados, e no código de exemplo, há uma demonstração de como 
+realizar o acesso. Em linhas gerais, usaremos uma biblioteca denominada <i><a class="URL" href="http://sourceforge.net/projects/jtmdb/">JTMDB</a></i> como intermediária, que oferece diversas facilidades. Os passos básicos são os seguintes:
+</div>
+<ol>
+<li>
+Incluir no início do código os <i>imports</i> necessários<div class="Standard">
+<div class="listing">
+<pre><code class="java"><span class="keyword">import</span> net.sf.jtmdb.*
+<span class="keyword">import</span> org.json.*;
+</code></pre>
+</div>
+
+</div>
+
+</li>
+<li>
+O acesso deve ser realizado através de uma <i>API</i> <i>key</i>, uma chave de acesso gerada através de um cadastro no site. Para fins acadêmicos, iremos utilizar da seguinte forma:<div class="Standard">
+<div class="listing">
+<pre><code class="java">GeneralSettings.setApiKey(<span class="string">"86a9671ee20b7406c5a0c15ca60824cd"</span>);
+</code></pre>
+</div>
+
+</div>
+
+</li>
+<li>
+A partir disso, os métodos de busca podem ser utilizados. Para buscar um filme pelo seu nome, use o método <i>search</i> da classe <i>Movie</i>. Por exemplo:<div class="Standard">
+<div class="listing">
+<pre><code class="java">List&lt;Movie&gt; lista = Movie.search(<span class="string">"Inception"</span>);
+</code></pre>
+</div>
+
+</div>
+
+</li>
+<li>
+Observe que o método <i>search </i>retorna uma coleção de <i>Movie</i>, pois o <i>TMDb</i>
+ faz uma busca pelo nome aproximado. Portanto, é necessário apresentar 
+ao usuário a lista, e deixá-lo escolher o filme correto. Supondo que 
+seja o primeiro da lista:<div class="Standard">
+<div class="listing">
+<pre><code class="java">Movie mymovie = lista.get(<span class="number">0</span>);
+</code></pre>
+</div>
+
+</div>
+
+</li>
+<li>
+Neste ponto, temos acesso aos dados básicos, mas para economizar tempo na busca, o <i>TMDb</i> não preenche a estrutura completa. Para tanto, é necessário obtermos um novo objeto através do método <i>getInfo</i>:<div class="Standard">
+<div class="listing">
+<pre><code class="java">mymovie = Movie.getInfo(mymovie.getID());
+</code></pre>
+</div>
+
+</div>
+
+</li>
+<li>
+Basta agora acessar os métodos desejados, extraindo as informações sobre
+ o filme, diretor, elenco, etc. Por exemplo, o elenco é representado por
+ uma classe <i>CastInfo</i>, contendo nome, função e personagem:<div class="Standard">
+<div class="listing">
+<pre><code class="java"><span class="keyword">for</span> (CastInfo c : mymovie.getCast())
+  System.out.println(c.getName() + <span class="string">" - "</span>
+    + c.getJob() + <span class="string">" - "</span>
+    + c.getCharacterName());
+</code></pre>
+</div>
+
+</div>
+
+</li>
+<li>
+Para obter o pôster do filme, o <i>TMDb</i> retorna um conjunto de objetos <i>MoviePoster</i>, e pode-se, por exemplo, solicitar a menor imagem de um deles (para reduzir o tempo de acesso), através do método <i>getSmallestImage</i>:<div class="Standard">
+<div class="listing">
+<pre><code class="java">MoviePoster poster = (MoviePoster) mymovie.getImages().posters.toArray()[<span class="number">0</span>];
+URL posterURL = poster.getSmallestImage();
+System.out.println(posterURL);
+</code></pre>
+</div>
+
+</div>
+<div class="Standard">
+Esse método retorna um objeto <i>URL</i>, e então basta associá-lo a uma imagem na interface. Pesquise como fazer isso! Dica: um objeto <i>JLabel</i> costuma ser uma boa idéia.
+</div>
+
+</li>
+
+</ol>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-3.3">3.3</a> Arquivo de dados da coleção de filmes
+</h2>
+<div class="Standard">
+No início da execução do programa, o arquivo com os dados da coleção 
+deve ser lido. O formato deve ser binário, com a lista encadeada 
+serializada. No final do programa, ou quando o usuário desejar, o 
+arquivo deve ser gravado novamente no disco. As alterações são sempre 
+realizadas nos dados da memória.
+</div>
+<h1 class="Seção">
+<a class="toc" name="toc-Seção-4">4</a> <b>Critérios de Avaliação</b>
+</h1>
+<div class="Standard">
+Leia <b>com atenção</b> os critérios de avaliação: 
+</div>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.1">4.1</a> Pontuação
+</h2>
+<ul>
+<li>
+Estrutura de dados (todas as operações, incluindo serialização): 5 pontos
+</li>
+<li>
+Interface gráfica: 3 pontos
+</li>
+<li>
+Utilização dos dados em arquivo (IMDB): 1 ponto
+</li>
+<li>
+Utilização dos dados de rede (TMDb): 1 ponto
+</li>
+
+</ul>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.2">4.2</a> Código
+</h2>
+<ul>
+<li>
+Toda comunicação com o usuário deve ser realizada através da interface 
+gráfica, não deve haver entrada nem saída de dados via console.
+</li>
+<li>
+A implementação deve seguir as orientações dadas em aula quanto a 
+convenções Java para nomes de identificadores e estrutura das classes 
+(ou seja, nomes de classes/interfaces começam com letra maiúscula, 
+atributos, métodos e variáveis em minúsculas).
+</li>
+<li>
+É <b>obrigatório</b> explorar herança e polimorfismo na implementação.
+</li>
+<li>
+O código deve ser identado (as ferramentas Eclipse e NetBeans FAZEM isso). Código não identado sofrerá descontos na nota.
+</li>
+<li>
+<b>Não serão aceitos trabalhos com erros de compilação. Programas que não compilarem corretamente terão nota ZERO automaticamente.</b> 
+</li>
+
+</ul>
+<h2 class="Subsection">
+<a class="toc" name="toc-Subsection-4.3">4.3</a> Entrega
+</h2>
+<ul>
+<li>
+Data de entrega no <i>Moodle</i> e apresentação: 26/11/2010 no início da aula (impreterivelmente, não haverá adiamentos).
+</li>
+<li>
+Os trabalhos são em duplas. Os arquivos contendo o código-fonte (.java) devem ser compactados e submetidos pelo <i>Moodle</i> até a data e hora especificadas. O arquivo compactado deve ter o nome e sobrenome dos alunos, da seguinte forma: <b>Nome1Ultimosobrenome_Nome2Ultimosobrenome.zip </b>(ex: AnaMedeiros_JoseSilva.zip).<b> NÃO ENVIE ARQUIVOS .RAR, APENAS .ZIP</b>
+</li>
+<li>
+A nota do trabalho depende da apresentação deste no laboratório, na data
+ marcada. Trabalhos entregues mas não apresentados terão sua nota 
+anulada automaticamente. Durante a apresentação será avaliado o domínio 
+da resolução do problema, podendo inclusive ser possível invalidar o 
+trabalho quando constatada a falta de conhecimento sobre o código 
+implementado.
+</li>
+<li>
+<b>A cópia parcial ou completa do trabalho terá como conseqüência a atribuição de nota ZERO ao trabalho dos alunos envolvidos.</b> <b>A verificação de cópias é feita inclusive entre turmas.</b>
+</li>
+
+</ul>
+
+<hr class="footer">
+<div class="footer" id="generated-by">
+Document generated by <a href="http://elyxer.nongnu.org/">eLyXer 1.0.0 (2010-08-23)</a> on <span class="create-date">2010-11-04T13:07:45.253177</span>
+</div>
+</div>
+</body></html>
