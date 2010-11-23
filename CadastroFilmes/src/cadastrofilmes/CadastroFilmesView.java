@@ -499,8 +499,24 @@ public class CadastroFilmesView extends FrameView {
 		cad.remove(cad.findByTitulo(jLabelTitulo.getText()));
 		jListPesquisa.setListData(cad.toArray());		
 		jListPesquisa.setSelectedIndex(0);
-		//FIXME: [Enhancement] Se a lista estiver vazia, tem que resetar os dados de exposição
+		
+		if (jListPesquisa.getSelectedValue() == null)
+			resetExposeComponents();
 	}//GEN-LAST:event_jButtonDeleteActionPerformed
+
+	void resetExposeComponents() {
+		jTextAreaComentario.setText(null);
+		jTextFieldAno.setText(null);
+		jTextFieldDiretor.setText(null);
+		jTextFieldMidia.setText(null); //FIXME: enhancements in media exposê
+		jTextFieldNota.setText(null);
+		jTextFieldTmdbid.setText(null);
+		jTextFieldTraduzido.setText(null);
+		jTextFieldUrl.setText(null);
+		jTextFieldVotos.setText(null);
+		jLabelTitulo.setText("TITULO");
+		jLabelPoster.setIcon(null);
+	}
 
 	tf.tmdb.CadastroFilmes cad;
     // Variables declaration - do not modify//GEN-BEGIN:variables
