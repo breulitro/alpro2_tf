@@ -427,9 +427,8 @@ public class TmdbCadastro extends javax.swing.JFrame {
 		//select.setVisible(true);
 		JFileChooser fc = new JFileChooser();
 		int ret = fc.showOpenDialog(this);
-		if (ret == JFileChooser.APPROVE_OPTION)
-			//FIXME: [Enhancement] Get Full Path
-			jTextFieldArquivoNome.setText(fc.getSelectedFile().getName());
+		if (ret == JFileChooser.APPROVE_OPTION)						
+			jTextFieldArquivoNome.setText(fc.getSelectedFile().getAbsolutePath());
 	}//GEN-LAST:event_jButtonArquivoChooseFileActionPerformed
 
 	/* Botão cadastrar */
@@ -439,23 +438,16 @@ public class TmdbCadastro extends javax.swing.JFrame {
 			if (jTabbedPaneMidia.getTitleAt(jTabbedPaneMidia.getSelectedIndex()).equals("Arquivo")) {				
 				System.out.println(jTextFieldArquivoNome.getText());
 				//FIXME: [Duvida] Why??
-
 				/*String[] s = jTextFieldArquivoNome.getText().split(".");
 				System.out.println(s.length);
 				System.out.println(jTextFieldArquivoNome.getText().split(".")[1]);*/
+
 				String nome = "",
 						extensao = "",
-						s = jTextFieldArquivoNome.getText();
-				//TODO: s.lastIndexOf('.');
-				for (int i = (s.length() - 1); i >=0; i--) {
-					System.out.println(i);
-					if (s.charAt(i) == '.') {
-						nome = s.substring(0, i - 1);						
-						extensao = s.substring(i + 1);						
-						break;
-					}
+						s = jTextFieldArquivoNome.getText();				
+				nome = s.substring(0, s.lastIndexOf('.') - 1);
+				extensao = s.substring(s.lastIndexOf('.') + 1);
 
-				}
 				m = new Arquivo(Integer.parseInt(jTextFieldArquivoTamanho.getText()),
 						nome,
 						extensao,
