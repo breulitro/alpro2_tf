@@ -11,6 +11,7 @@ import java.io.Serializable;
  *
  * @author foo
  */
+//TODO: tem algum jeito melhor de fazer isso?
 public class Midia implements Serializable {
 
 }

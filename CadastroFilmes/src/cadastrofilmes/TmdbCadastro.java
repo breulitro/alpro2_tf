@@ -14,7 +14,6 @@ package cadastrofilmes;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import net.sf.jtmdb.CastInfo;
@@ -37,6 +36,7 @@ import tf.tmdb.Midia.Midia;
  *
  * @author foo
  */
+//TODO: Modal
 public class TmdbCadastro extends javax.swing.JFrame {
 	public CadastroFilmes cad;
 	private ListaFilmes listaFilmes;
@@ -423,8 +423,6 @@ public class TmdbCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 	/* Botao select file action */
 	private void jButtonArquivoChooseFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArquivoChooseFileActionPerformed
-		//JFrame select = new SelectFile(jTextFieldArquivoNome);
-		//select.setVisible(true);
 		JFileChooser fc = new JFileChooser();
 		int ret = fc.showOpenDialog(this);
 		if (ret == JFileChooser.APPROVE_OPTION)						
@@ -480,7 +478,6 @@ public class TmdbCadastro extends javax.swing.JFrame {
 	}//GEN-LAST:event_jButtonCadastrarActionPerformed
 
 	private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
-		//if (listaFilmes.getListaTitulos().contains(jTextFieldPesquisa.getText())) {
 		if (jComboBoxWheretoSearch.getSelectedIndex() == 0) {
 			System.out.println("Pegando dados do IMDB top 250");
 			for (Filme f: listaFilmes)
@@ -501,7 +498,6 @@ public class TmdbCadastro extends javax.swing.JFrame {
 
 				jTextFieldTitulo.setText(l.getName());
 				l = Movie.getInfo(l.getID());
-				//FIXME: [Duvida] é getID() ou getImdbId()?
 				jTextFieldTmdbid.setText("" + l.getID());
 
 				jTextFieldUrl.setText("" + l.getUrl());

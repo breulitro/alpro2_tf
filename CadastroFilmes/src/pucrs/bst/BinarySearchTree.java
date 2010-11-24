@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
+//TODO: pode alterar as classes fornecidas pelo professor?
 public class BinarySearchTree<E extends Comparable<E>> {
 
     private Node<E> root; //raiz
@@ -360,6 +361,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 		ObjectOutputStream os = null;
 		try {
 			os = new ObjectOutputStream(new FileOutputStream(path));
+			//TODO: dá prá ser?
 			os.writeObject(root);
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -396,6 +398,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 		printStructure();
 	}
 
+	//FIXME: Isso é usado?
 	public Node<E> getRoot() {
 		return root;
 	}
